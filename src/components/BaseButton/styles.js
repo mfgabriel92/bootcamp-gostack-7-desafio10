@@ -4,9 +4,9 @@ import LinearGradient from 'react-native-linear-gradient'
 import { RectButton } from 'react-native-gesture-handler'
 
 export const Wrapper = styled(LinearGradient).attrs({
-  colors: ['#ca3201', '#d99556'],
+  colors: ['#d99556', '#ca3201'],
   useAngle: true,
-  angle: -135,
+  angle: 135,
 })`
   width: 100%;
 `
