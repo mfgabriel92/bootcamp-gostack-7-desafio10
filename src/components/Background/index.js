@@ -5,6 +5,5 @@ export default styled.ImageBackground.attrs({
   source: bg,
 })`
   flex: 1;
-  padding: 20px;
   font-family: 'Roboto-Regular';
 `

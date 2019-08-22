@@ -26,7 +26,10 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-console': ['error', { allow: ['tron'] }],
     'prettier/prettier': 'error',
-    'react/prop-types': [2, { ignore: ['children', 'navigation'] }],
+    'react/prop-types': [
+      2,
+      { ignore: ['children', 'navigation', 'isFocused'] },
+    ],
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'react/jsx-one-expression-per-line': 'off',
     'react-native/no-raw-text': 'off',
