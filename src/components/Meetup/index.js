@@ -6,6 +6,7 @@ import { BASE_URL } from 'react-native-dotenv'
 import {
   Container,
   Banner,
+  Ribbon,
   Info,
   Title,
   Location,
@@ -37,6 +38,7 @@ function Meetup({ meetup }) {
         }
         loadingIndicatorSource={noBanner}
       />
+      {meetup.past && <Ribbon />}
       <Info>
         <View>
           <Title>{meetup.title}</Title>

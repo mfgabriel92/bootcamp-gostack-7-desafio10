@@ -1,6 +1,8 @@
 import styled from 'styled-components/native'
 import { RectButton } from 'react-native-gesture-handler'
+import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import done from '../../assets/ribbon-done.png'
 
 export const Container = styled(RectButton)`
   margin: 5px;
@@ -81,4 +83,12 @@ export const UserAvatar = styled.Image`
 export const UserName = styled.Text`
   font-size: 11px;
   margin-left: 10px;
+`
+
+export const Ribbon = styled.Image.attrs({
+  source: done,
+})`
+  position: absolute;
+  right: 0;
+  width: 75px;
 `
