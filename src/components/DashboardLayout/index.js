@@ -25,11 +25,11 @@ function DashboardLayout({ navigation }) {
         </UserName>
       </Banner>
       <Menu>
-        <Item>
+        <Item onPress={() => navigation.navigate('Meetups')}>
           <ItemIcon name="calendar-alt" />
           <ItemPage>Meetups</ItemPage>
         </Item>
-        <Item>
+        <Item onPress={() => navigation.navigate('MyMeetups')}>
           <ItemIcon name="calendar-plus" />
           <ItemPage>My Meetups</ItemPage>
         </Item>
