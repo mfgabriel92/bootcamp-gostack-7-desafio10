@@ -33,7 +33,7 @@ function DashboardLayout({ navigation }) {
           <ItemIcon name="calendar-plus" />
           <ItemPage>My Meetups</ItemPage>
         </Item>
-        <Item>
+        <Item onPress={() => navigation.navigate('AttendingMeetups')}>
           <ItemIcon name="calendar-check" />
           <ItemPage>Meetups I am going</ItemPage>
         </Item>

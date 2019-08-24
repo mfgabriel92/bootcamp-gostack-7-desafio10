@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp'
 import DashboardLayout from './components/DashboardLayout'
 import Meetups from './pages/Meetups'
 import MyMeetups from './pages/MyMeetups'
+import AttendingMeetups from './pages/AttendingMeetups'
 import Create from './pages/Create'
 
 export default (isSigned = false) =>
@@ -27,6 +28,7 @@ export default (isSigned = false) =>
               {
                 Meetups,
                 MyMeetups,
+                AttendingMeetups,
                 Create,
               },
               {
