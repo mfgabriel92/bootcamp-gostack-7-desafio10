@@ -8,8 +8,8 @@ import logo from '../../assets/logo.png'
 function SignIn({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const passwordRef = useRef(),
-    emailRef = useRef()
+  const passwordRef = useRef()
+  const emailRef = useRef()
   const { isLoading } = useSelector(state => state.auth)
   const dispatch = useDispatch()
 

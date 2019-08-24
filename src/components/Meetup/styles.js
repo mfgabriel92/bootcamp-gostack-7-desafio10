@@ -6,7 +6,7 @@ export const Container = styled(RectButton)`
   margin: 5px;
   background: #fff;
   flex: 1;
-  height: 255px;
+  height: 275px;
 `
 
 export const Info = styled.View`
@@ -19,7 +19,8 @@ export const Info = styled.View`
 export const Banner = styled.Image.attrs({
   resizeMode: 'cover',
 })`
-  height: 110px;
+  height: 130px;
+  width: 100%;
 `
 
 export const Title = styled.Text.attrs({
@@ -72,12 +73,12 @@ export const User = styled.View`
 `
 
 export const UserAvatar = styled.Image`
-  height: 20px;
-  width: 20px;
-  border-radius: 10px;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
 `
 
 export const UserName = styled.Text`
-  font-size: 12px;
+  font-size: 11px;
   margin-left: 10px;
 `

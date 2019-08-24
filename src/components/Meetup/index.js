@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import { parseISO, format } from 'date-fns'
+import { BASE_URL } from 'react-native-dotenv'
 import {
   Container,
   Banner,
@@ -28,7 +29,14 @@ function Meetup({ meetup }) {
 
   return (
     <Container>
-      <Banner source={meetup.banner ? meetup.banner.path : noBanner} />
+      <Banner
+        source={
+          meetup.banner
+            ? { uri: `${BASE_URL}/files/${meetup.banner.name}` }
+            : noBanner
+        }
+        loadingIndicatorSource={noBanner}
+      />
       <Info>
         <View>
           <Title>{meetup.title}</Title>
@@ -46,8 +54,7 @@ function Meetup({ meetup }) {
           source={meetup.user.avatar ? meetup.user.avatar.path : noUser}
         />
         <UserName>
-          {meetup.user.first_name}
-          {meetup.user.middle_name}
+          {meetup.user.first_name} {meetup.user.middle_name}{' '}
           {meetup.user.last_name}
         </UserName>
       </User>

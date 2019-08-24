@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import DashboardLayout from './components/DashboardLayout'
 import Meetups from './pages/Meetups'
+import Create from './pages/Create'
 
 export default (isSigned = false) =>
   createAppContainer(
@@ -24,6 +25,7 @@ export default (isSigned = false) =>
             Meetups: createStackNavigator(
               {
                 Meetups,
+                Create,
               },
               {
                 defaultNavigationOptions: {

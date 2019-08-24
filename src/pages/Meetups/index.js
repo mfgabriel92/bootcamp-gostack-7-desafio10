@@ -15,5 +15,13 @@ export default {
       </TouchableOpacity>
     ),
     headerTitle: 'Meetups',
+    headerRight: (
+      <TouchableOpacity
+        style={{ marginRight: 20 }}
+        onPress={() => navigation.navigate('Create')}
+      >
+        <Icon name="plus" size={23} color="#333" />
+      </TouchableOpacity>
+    ),
   }),
 }

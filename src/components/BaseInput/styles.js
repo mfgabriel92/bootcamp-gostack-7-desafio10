@@ -7,6 +7,13 @@ export const Container = styled.View`
   align-items: center;
 `
 
+export const Label = styled.Text`
+  align-self: flex-start;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 15px;
+`
+
 export const TextInput = styled.TextInput.attrs({
   placeholderTextColor: '#333',
 })`

@@ -11,7 +11,7 @@ function BaseButton({ icon, children, isLoading, ...rest }) {
           <ActivityIndicator size="small" color="#fff" />
         ) : (
           <>
-            <ButtonIcon icon="check" />
+            <ButtonIcon icon={icon} />
             <Text>{children}</Text>
           </>
         )}
