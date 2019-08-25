@@ -5,4 +5,6 @@ export default {
   SIGN_UP: 'auth/SIGN_UP',
 
   FAILURE: 'auth/FAILURE',
+
+  LOGOFF: 'auth/LOGOFF',
 }

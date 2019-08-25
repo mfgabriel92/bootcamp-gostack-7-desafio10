@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { logoff } from '../../store/auth/actions'
 import {
   Container,
   Banner,
@@ -15,6 +16,7 @@ import noImage from '../../assets/no-user.png'
 
 function DashboardLayout({ navigation }) {
   const { me } = useSelector(state => state.user)
+  const dispatch = useDispatch()
 
   return (
     <Container>
@@ -38,7 +40,7 @@ function DashboardLayout({ navigation }) {
           <ItemPage>Meetups I am going</ItemPage>
         </Item>
         <Separator />
-        <Item>
+        <Item onPress={() => dispatch(logoff())}>
           <ItemIcon name="door-open" />
           <ItemPage>Logoff</ItemPage>
         </Item>

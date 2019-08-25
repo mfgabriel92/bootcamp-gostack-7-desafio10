@@ -22,6 +22,11 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.token = null
         draft.isSigned = false
         draft.isLoading = false
+        break
+      case types.LOGOFF:
+        draft.token = null
+        draft.isSigned = false
+        break
       default:
     }
   })

@@ -30,4 +30,8 @@ const failure = () => ({
   type: types.FAILURE,
 })
 
-export { signIn, signInSuccess, signUp, failure }
+const logoff = () => ({
+  type: types.LOGOFF,
+})
+
+export { signIn, signInSuccess, signUp, failure, logoff }
