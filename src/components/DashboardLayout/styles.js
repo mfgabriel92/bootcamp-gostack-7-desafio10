@@ -63,7 +63,7 @@ export const ItemIcon = styled(Icon).attrs(props => ({
 `
 
 export const ItemPage = styled.Text`
-  font-size: 14px;
+  font-size: 15px;
   color: #777;
   font-family: 'Roboto-Medium';
 `

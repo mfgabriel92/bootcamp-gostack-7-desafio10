@@ -11,11 +11,11 @@ function SignUp({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const firstNameRef = useRef(),
-    lastNameRef = useRef(),
-    emailRef = useRef(),
-    passwordRef = useRef(),
-    confirmPasswordRef = useRef()
+  const firstNameRef = useRef()
+  const lastNameRef = useRef()
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const confirmPasswordRef = useRef()
   const { isLoading } = useSelector(state => state.auth)
   const dispatch = useDispatch()
 

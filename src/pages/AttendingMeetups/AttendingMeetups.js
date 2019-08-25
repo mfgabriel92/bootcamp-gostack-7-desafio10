@@ -3,6 +3,7 @@ import { withNavigationFocus } from 'react-navigation'
 import api from '../../services/api'
 import { Container, MeetupsList } from './styles'
 import Meetup from '../../components/Meetup'
+import Loading from '../../components/Loading'
 
 function AttendingMeetups({ isFocused }) {
   const [meetups, setMeetups] = useState([])
@@ -24,6 +25,14 @@ function AttendingMeetups({ isFocused }) {
       loadMeetups()
     }
   }, [isFocused])
+
+  if (isLoading) {
+    return (
+      <Container>
+        <Loading />
+      </Container>
+    )
+  }
 
   return (
     <Container>

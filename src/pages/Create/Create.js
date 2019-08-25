@@ -9,11 +9,11 @@ import { createUpdateMeetup } from '../../store/meetup/actions'
 
 function Create() {
   const [banner, setBanner] = useState(null)
-  const [title, setTitle] = useState('Lorem ipsum')
-  const [description, setDescription] = useState('Lorem ipsum dolor sit amet')
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
   const [date, setDate] = useState(new Date())
   const [time, setTime] = useState('12:00')
-  const [location, setLocation] = useState('Novo Hamburgo, RS')
+  const [location, setLocation] = useState('')
   const titleRef = useRef()
   const descriptionRef = useRef()
   const locationRef = useRef()
@@ -36,7 +36,6 @@ function Create() {
         <Input
           label="Event title"
           icon="calendar"
-          placeholder="The title of the event"
           ref={titleRef}
           returnKeyType="next"
           onSubmitEditing={() => descriptionRef.current.focus()}
@@ -46,7 +45,6 @@ function Create() {
         <Textarea
           label="Event description"
           icon="question"
-          placeholder="The description of the event"
           ref={descriptionRef}
           returnKeyType="next"
           value={description}
@@ -59,7 +57,6 @@ function Create() {
         <Input
           label="Location"
           icon="map-marker-alt"
-          placeholder="The location of the event"
           ref={locationRef}
           returnKeyType="next"
           onSubmitEditing={() => descriptionRef.current.focus()}

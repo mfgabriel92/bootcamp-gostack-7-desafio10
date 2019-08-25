@@ -1,6 +1,5 @@
 import styled from 'styled-components/native'
 import { RectButton } from 'react-native-gesture-handler'
-import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import done from '../../assets/ribbon-done.png'
 
