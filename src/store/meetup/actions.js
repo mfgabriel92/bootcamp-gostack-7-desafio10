@@ -19,8 +19,15 @@ const createUpdateMeetup = (
   },
 })
 
+const attendMeetup = id => ({
+  type: types.ATTEND_MEETUP,
+  payload: {
+    id,
+  },
+})
+
 const failure = () => ({
   type: types.FAILURE,
 })
 
-export { createUpdateMeetup, failure }
+export { createUpdateMeetup, attendMeetup, failure }

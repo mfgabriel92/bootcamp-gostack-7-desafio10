@@ -1,4 +1,5 @@
 export default {
   CREATE_UPDATE_MEETUP: 'meetup/CREATE_UPDATE_MEETUP',
+  ATTEND_MEETUP: 'meetup/ATTEND_MEETUP',
   FAILURE: 'meetup/FAILURE',
 }

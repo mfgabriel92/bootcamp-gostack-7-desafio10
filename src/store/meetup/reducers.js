@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 export default function meetup(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case types.CREATE_UPDATE_MEETUP:
+      case types.CREATE_UPDATE_MEETUP || types.ATTEND_MEETUP:
         draft.isLoading = true
         break
       case types.FAILURE:

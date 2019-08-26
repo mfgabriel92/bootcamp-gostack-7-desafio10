@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { View } from 'react-native'
 import { parseISO, format } from 'date-fns'
 import { withNavigation } from 'react-navigation'
@@ -22,6 +22,7 @@ import {
   UserAvatar,
   UserName,
 } from './styles'
+import { attendMeetup } from '../../store/meetup/actions'
 import noBanner from '../../assets/no-banner.png'
 import noUser from '../../assets/no-user.png'
 
@@ -32,6 +33,7 @@ function Detail({ navigation }) {
     () => format(parseISO(meetup.date), "MMMM do, yyyy ' | ' h:mm a"),
     [meetup.date]
   )
+  const dispatch = useDispatch()
 
   return (
     <Container>
@@ -56,13 +58,17 @@ function Detail({ navigation }) {
       </Info>
       <Separator />
       <Footer>
-        {me.id === meetup.user.id ? (
-          <Button icon="pencil-alt" onPress={() => {}}>
-            Edit
-          </Button>
-        ) : (
-          <Button onPress={() => {}}>I want to go!</Button>
-        )}
+        {me.id === meetup.user.id
+          ? !meetup.past && (
+              <Button icon="pencil-alt" onPress={() => {}}>
+                Edit
+              </Button>
+            )
+          : !meetup.past && (
+              <Button onPress={() => dispatch(attendMeetup(meetup.id))}>
+                I want to go!
+              </Button>
+            )}
         <User>
           <UserAvatar
             source={meetup.user.avatar ? meetup.user.avatar.path : noUser}

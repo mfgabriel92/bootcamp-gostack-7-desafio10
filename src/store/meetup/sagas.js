@@ -39,4 +39,17 @@ export function* createUpdateMeetup({ payload }) {
   }
 }
 
-export default all([takeLatest(types.CREATE_UPDATE_MEETUP, createUpdateMeetup)])
+export function* attendMeetup({ payload: { id } }) {
+  try {
+    yield call(api.post, `meetups/${id}/attend`)
+    navigation.navigate('AttendingMeetups')
+  } catch (error) {
+    Alert.alert('Attending Error', 'Error while attending meetup')
+    yield put(failure())
+  }
+}
+
+export default all([
+  takeLatest(types.CREATE_UPDATE_MEETUP, createUpdateMeetup),
+  takeLatest(types.ATTEND_MEETUP, attendMeetup),
+])
