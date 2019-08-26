@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { ActivityIndicator } from 'react-native'
 import { Wrapper, ButtonIcon, Button, Text } from './styles'
 
-function BaseButton({ icon, children, isLoading, ...rest }) {
+function BaseButton({ width, icon, children, isLoading, ...rest }) {
   return (
-    <Wrapper>
+    <Wrapper width={width}>
       <Button disabled={isLoading} {...rest}>
         {isLoading ? (
           <ActivityIndicator size="small" color="#fff" />
@@ -21,11 +21,13 @@ function BaseButton({ icon, children, isLoading, ...rest }) {
 }
 
 BaseButton.propTypes = {
+  width: PropTypes.any,
   isLoading: PropTypes.bool,
   icon: PropTypes.string,
 }
 
 BaseButton.defaultProps = {
+  width: '100%',
   isLoading: false,
   icon: null,
 }

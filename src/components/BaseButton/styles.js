@@ -8,7 +8,7 @@ export const Wrapper = styled(LinearGradient).attrs({
   useAngle: true,
   angle: 135,
 })`
-  width: 100%;
+  width: ${props => props.width};
 `
 
 export const ButtonIcon = styled(Icon).attrs(props => ({

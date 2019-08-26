@@ -52,7 +52,7 @@ function SignIn({ navigation }) {
           <Button icon="check" onPress={handleOnSubmit} isLoading={isLoading}>
             Enter
           </Button>
-          <Link onPress={() => navigation.navigate('SignUp')}>
+          <Link href onPress={() => navigation.navigate('SignUp')}>
             <LinkText>No account? Create one</LinkText>
           </Link>
         </Form>

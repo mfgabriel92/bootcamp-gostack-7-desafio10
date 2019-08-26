@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
-import { withNavigation } from 'react-navigation'
+import { useSelector } from 'react-redux'
 import { View } from 'react-native'
-import PropTypes from 'prop-types'
 import { parseISO, format } from 'date-fns'
+import { withNavigation } from 'react-navigation'
 import { BASE_URL } from 'react-native-dotenv'
 import {
   Container,
@@ -16,6 +16,8 @@ import {
   Description,
   Date,
   Separator,
+  Footer,
+  Button,
   User,
   UserAvatar,
   UserName,
@@ -23,18 +25,16 @@ import {
 import noBanner from '../../assets/no-banner.png'
 import noUser from '../../assets/no-user.png'
 
-function Meetup({ meetup, navigation }) {
+function Detail({ navigation }) {
+  const { me } = useSelector(state => state.user)
+  const meetup = navigation.getParam('meetup')
   const formattedDate = useMemo(
     () => format(parseISO(meetup.date), "MMMM do, yyyy ' | ' h:mm a"),
     [meetup.date]
   )
 
-  function handleOnMeetupPress() {
-    navigation.navigate('Detail', { meetup })
-  }
-
   return (
-    <Container onPress={handleOnMeetupPress}>
+    <Container>
       <Banner
         source={
           meetup.banner
@@ -55,21 +55,26 @@ function Meetup({ meetup, navigation }) {
         <Date>{formattedDate}</Date>
       </Info>
       <Separator />
-      <User>
-        <UserAvatar
-          source={meetup.user.avatar ? meetup.user.avatar.path : noUser}
-        />
-        <UserName>
-          {meetup.user.first_name} {meetup.user.middle_name}{' '}
-          {meetup.user.last_name}
-        </UserName>
-      </User>
+      <Footer>
+        {me.id === meetup.user.id ? (
+          <Button icon="pencil-alt" onPress={() => {}}>
+            Edit
+          </Button>
+        ) : (
+          <Button onPress={() => {}}>I want to go!</Button>
+        )}
+        <User>
+          <UserAvatar
+            source={meetup.user.avatar ? meetup.user.avatar.path : noUser}
+          />
+          <UserName>
+            {meetup.user.first_name} {meetup.user.middle_name}{' '}
+            {meetup.user.last_name}
+          </UserName>
+        </User>
+      </Footer>
     </Container>
   )
 }
 
-Meetup.propTypes = {
-  meetup: PropTypes.shape().isRequired,
-}
-
-export default withNavigation(Meetup)
+export default withNavigation(Detail)

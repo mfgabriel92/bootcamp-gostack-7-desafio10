@@ -13,6 +13,7 @@ import Meetups from './pages/Meetups'
 import MyMeetups from './pages/MyMeetups'
 import AttendingMeetups from './pages/AttendingMeetups'
 import Create from './pages/Create'
+import Detail from './pages/Detail'
 
 export default (isSigned = false) =>
   createAppContainer(
@@ -30,6 +31,7 @@ export default (isSigned = false) =>
                 MyMeetups,
                 AttendingMeetups,
                 Create,
+                Detail,
               },
               {
                 defaultNavigationOptions: {
