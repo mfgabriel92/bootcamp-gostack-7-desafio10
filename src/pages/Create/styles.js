@@ -26,11 +26,9 @@ export const PickImage = styled.TouchableOpacity`
   margin-bottom: 20px;
 `
 
-export const Form = styled.View`
+export const Form = styled.ScrollView.attrs({})`
   width: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: #fff;
   padding: 20px;
 `

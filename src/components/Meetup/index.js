@@ -16,12 +16,9 @@ import {
   Description,
   Date,
   Separator,
-  User,
-  UserAvatar,
-  UserName,
 } from './styles'
+import User from '../User'
 import noBanner from '../../assets/no-banner.png'
-import noUser from '../../assets/no-user.png'
 
 function Meetup({ meetup, navigation }) {
   const formattedDate = useMemo(
@@ -51,19 +48,11 @@ function Meetup({ meetup, navigation }) {
             <LocationName>{meetup.location}</LocationName>
           </Location>
         </View>
-        <Description>&quot;{meetup.description}&quot;</Description>
+        <Description>{meetup.description}</Description>
         <Date>{formattedDate}</Date>
       </Info>
       <Separator />
-      <User>
-        <UserAvatar
-          source={meetup.user.avatar ? meetup.user.avatar.path : noUser}
-        />
-        <UserName>
-          {meetup.user.first_name} {meetup.user.middle_name}{' '}
-          {meetup.user.last_name}
-        </UserName>
-      </User>
+      <User user={meetup.user} />
     </Container>
   )
 }

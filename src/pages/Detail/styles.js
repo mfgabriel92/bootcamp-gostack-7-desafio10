@@ -80,23 +80,6 @@ export const Button = styled(BaseButton).attrs({
   height: 30px;
 `
 
-export const User = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`
-
-export const UserAvatar = styled.Image`
-  height: 20px;
-  width: 20px;
-  border-radius: 20px;
-`
-
-export const UserName = styled.Text`
-  font-size: 12px;
-  margin-left: 7px;
-`
-
 export const Ribbon = styled.Image.attrs({
   source: done,
 })`

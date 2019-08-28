@@ -33,7 +33,7 @@ export const UserAvatar = styled.Image`
 export const UserName = styled.Text`
   color: #f7f7f7;
   font-size: 16px;
-  font-family: 'Roboto-Bold';
+  font-family: 'OpenSans-Bold';
 `
 
 export const Menu = styled.ScrollView`
@@ -65,5 +65,5 @@ export const ItemIcon = styled(Icon).attrs(props => ({
 export const ItemPage = styled.Text`
   font-size: 15px;
   color: #777;
-  font-family: 'Roboto-Medium';
+  font-family: 'OpenSans-SemiBold';
 `

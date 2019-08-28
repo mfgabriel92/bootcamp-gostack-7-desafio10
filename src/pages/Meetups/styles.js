@@ -18,7 +18,7 @@ export const Header = styled.View`
 
 export const Day = styled.Text`
   color: #fff;
-  font-weight: bold;
+  font-family: 'OpenSans-Bold';
   font-size: 16px;
   margin: 0 15px;
 `

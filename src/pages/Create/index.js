@@ -14,6 +14,6 @@ export default {
         <Icon name="chevron-thin-left" size={23} color="#333" />
       </TouchableOpacity>
     ),
-    headerTitle: 'Create Meetup',
+    headerTitle: `${navigation.getParam('meetup') ? 'Edit' : 'Create'} Meetup`,
   }),
 }

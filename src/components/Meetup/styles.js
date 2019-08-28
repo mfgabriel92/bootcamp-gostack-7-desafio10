@@ -27,14 +27,15 @@ export const Banner = styled.Image.attrs({
 export const Title = styled.Text.attrs({
   numberOfLines: 1,
 })`
-  font-weight: bold;
   color: #333;
   font-size: 18px;
+  font-family: 'OpenSans-Bold';
 `
 
 export const Location = styled.View`
   flex-direction: row;
   margin-top: 3px;
+  font-family: 'OpenSans-Regular';
 `
 
 export const LocationIcon = styled(Icon).attrs({
@@ -47,13 +48,14 @@ export const LocationIcon = styled(Icon).attrs({
 export const LocationName = styled.Text`
   font-size: 12px;
   color: #999;
+  font-family: 'OpenSans-Regular';
 `
 
 export const Description = styled.Text.attrs({
-  numberOfLines: 2,
+  numberOfLines: 3,
 })`
-  font-style: italic;
   color: #999;
+  font-family: 'OpenSans-RegularItalic';
 `
 
 export const Date = styled.Text`
@@ -82,6 +84,7 @@ export const UserAvatar = styled.Image`
 export const UserName = styled.Text`
   font-size: 11px;
   margin-left: 10px;
+  font-family: 'OpenSans-Regular';
 `
 
 export const Ribbon = styled.Image.attrs({

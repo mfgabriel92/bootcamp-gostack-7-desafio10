@@ -18,13 +18,10 @@ import {
   Separator,
   Footer,
   Button,
-  User,
-  UserAvatar,
-  UserName,
 } from './styles'
 import { attendMeetup } from '../../store/meetup/actions'
 import noBanner from '../../assets/no-banner.png'
-import noUser from '../../assets/no-user.png'
+import User from '../../components/User'
 
 function Detail({ navigation }) {
   const { me } = useSelector(state => state.user)
@@ -34,6 +31,10 @@ function Detail({ navigation }) {
     [meetup.date]
   )
   const dispatch = useDispatch()
+
+  function handleEdit() {
+    navigation.navigate('Create', { meetup })
+  }
 
   return (
     <Container>
@@ -53,31 +54,25 @@ function Detail({ navigation }) {
             <LocationName>{meetup.location}</LocationName>
           </Location>
         </View>
-        <Description>&quot;{meetup.description}&quot;</Description>
+        <Description>{meetup.description}</Description>
         <Date>{formattedDate}</Date>
       </Info>
       <Separator />
       <Footer>
-        {me.id === meetup.user.id
-          ? !meetup.past && (
-              <Button icon="pencil-alt" onPress={() => {}}>
-                Edit
-              </Button>
-            )
-          : !meetup.past && (
-              <Button onPress={() => dispatch(attendMeetup(meetup.id))}>
-                I want to go!
-              </Button>
-            )}
-        <User>
-          <UserAvatar
-            source={meetup.user.avatar ? meetup.user.avatar.path : noUser}
-          />
-          <UserName>
-            {meetup.user.first_name} {meetup.user.middle_name}{' '}
-            {meetup.user.last_name}
-          </UserName>
-        </User>
+        <View>
+          {me.id === meetup.user.id
+            ? !meetup.past && (
+                <Button icon="pencil-alt" onPress={handleEdit}>
+                  Edit
+                </Button>
+              )
+            : !meetup.past && (
+                <Button onPress={() => dispatch(attendMeetup(meetup.id))}>
+                  I want to go!
+                </Button>
+              )}
+        </View>
+        <User user={meetup.user} />
       </Footer>
     </Container>
   )

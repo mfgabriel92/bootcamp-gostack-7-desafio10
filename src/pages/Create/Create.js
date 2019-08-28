@@ -1,13 +1,21 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setHours, setMinutes, setSeconds } from 'date-fns'
+import {
+  parseISO,
+  setHours,
+  setMinutes,
+  setSeconds,
+  getHours,
+  getMinutes,
+} from 'date-fns'
 import BaseImagePicker from '../../components/BaseImagePicker'
 import BaseDateInput from '../../components/BaseDateInput'
 import BaseTimeInput from '../../components/BaseTimeInput'
 import { Container, Form, Input, Textarea, DateTime, Button } from './styles'
 import { createUpdateMeetup } from '../../store/meetup/actions'
 
-function Create() {
+function Create({ navigation }) {
+  const [id, setId] = useState(null)
   const [banner, setBanner] = useState(null)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -19,13 +27,30 @@ function Create() {
   const locationRef = useRef()
   const { isLoading } = useSelector(state => state.auth)
   const dispatch = useDispatch()
+  const meetup = navigation.getParam('meetup')
+
+  useEffect(() => {
+    if (meetup) {
+      setId(meetup.id)
+      setBanner(meetup.banner)
+      setTitle(meetup.title)
+      setDescription(meetup.description)
+      setDate(parseISO(meetup.date))
+
+      const h = getHours(parseISO(meetup.date))
+      const m = getMinutes(parseISO(meetup.date))
+
+      setTime(`${h}:${m}`)
+      setLocation(meetup.location)
+    }
+  }, [meetup])
 
   function handleOnSubmit() {
     const [h, m] = time.split(':')
     const dateTime = setSeconds(setMinutes(setHours(date, h), m), 0)
 
     dispatch(
-      createUpdateMeetup(null, banner, title, description, dateTime, location)
+      createUpdateMeetup(id, banner, title, description, dateTime, location)
     )
   }
 
@@ -46,7 +71,6 @@ function Create() {
           label="Event description"
           icon="question"
           ref={descriptionRef}
-          returnKeyType="next"
           value={description}
           onChangeText={setDescription}
         />
@@ -58,13 +82,17 @@ function Create() {
           label="Location"
           icon="map-marker-alt"
           ref={locationRef}
-          returnKeyType="next"
-          onSubmitEditing={() => descriptionRef.current.focus()}
+          returnKeyType="send"
+          onSubmitEditing={handleOnSubmit}
           value={location}
           onChangeText={setLocation}
         />
-        <Button icon="plus" onPress={handleOnSubmit} isLoading={isLoading}>
-          Create
+        <Button
+          icon={`${id ? 'pencil-alt' : 'plus'}`}
+          onPress={handleOnSubmit}
+          isLoading={isLoading}
+        >
+          {id ? 'Edit' : 'Create'}
         </Button>
       </Form>
     </Container>
