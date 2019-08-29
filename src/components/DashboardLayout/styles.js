@@ -1,5 +1,6 @@
 import styled from 'styled-components/native'
 import { SafeAreaView } from 'react-navigation'
+import { RectButton } from 'react-native-gesture-handler'
 import { darken } from 'polished'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/FontAwesome5'
@@ -20,6 +21,14 @@ export const Banner = styled(LinearGradient).attrs({
   justify-content: center;
   height: 120px;
   background: ${darken(0.1, '#d99556')};
+`
+
+export const BannerWrapper = styled(RectButton)`
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
 `
 
 export const UserAvatar = styled.Image`

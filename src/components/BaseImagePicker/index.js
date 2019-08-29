@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text } from 'react-native'
 import PropTypes from 'prop-types'
-
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import ImagePicker from 'react-native-image-picker'
+import { BASE_URL } from 'react-native-dotenv'
 import { Banner, PickImage } from './styles'
 
-function BaseImagePicker({ onSelect }) {
+function BaseImagePicker({ onSelect, banner }) {
   const [preview, setPreview] = useState(null)
+
+  useEffect(() => {
+    if (banner) {
+      setPreview({ uri: `${BASE_URL}/files/${banner.name}` })
+    }
+  }, [banner])
 
   function chooseImage() {
     const options = {
@@ -49,23 +55,28 @@ function BaseImagePicker({ onSelect }) {
   }
 
   return (
-    <>
+    <PickImage onPress={chooseImage}>
       {preview ? (
         <Banner source={preview} />
       ) : (
-        <PickImage onPress={chooseImage}>
+        <>
           <Text>
             <Icon name="camera" size={56} color="#bbb" />
           </Text>
           <Text>Pick an image</Text>
-        </PickImage>
+        </>
       )}
-    </>
+    </PickImage>
   )
 }
 
 BaseImagePicker.propTypes = {
   onSelect: PropTypes.func.isRequired,
+  banner: PropTypes.object,
+}
+
+BaseImagePicker.defaultProps = {
+  banner: null,
 }
 
 export default BaseImagePicker

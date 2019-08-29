@@ -32,7 +32,6 @@ function Create({ navigation }) {
   useEffect(() => {
     if (meetup) {
       setId(meetup.id)
-      setBanner(meetup.banner)
       setTitle(meetup.title)
       setDescription(meetup.description)
       setDate(parseISO(meetup.date))
@@ -57,7 +56,10 @@ function Create({ navigation }) {
   return (
     <Container>
       <Form>
-        <BaseImagePicker onSelect={setBanner} />
+        <BaseImagePicker
+          onSelect={setBanner}
+          banner={meetup && meetup.banner}
+        />
         <Input
           label="Event title"
           icon="calendar"

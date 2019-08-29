@@ -6,6 +6,7 @@ import {
   Banner,
   UserAvatar,
   UserName,
+  BannerWrapper,
   Menu,
   Separator,
   Item,
@@ -21,10 +22,12 @@ function DashboardLayout({ navigation }) {
   return (
     <Container>
       <Banner>
-        <UserAvatar source={me.avatar ? me.avatar.path : noImage} />
-        <UserName>
-          {me.first_name} {me.middle_name} {me.last_name}
-        </UserName>
+        <BannerWrapper onPress={() => navigation.navigate('Profile', { me })}>
+          <UserAvatar source={me.avatar ? me.avatar.path : noImage} />
+          <UserName>
+            {me.first_name} {me.middle_name} {me.last_name}
+          </UserName>
+        </BannerWrapper>
       </Banner>
       <Menu>
         <Item onPress={() => navigation.navigate('Meetups')}>
