@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Form, Logo, Input, Button, Link, LinkText } from './styles'
 import { signIn } from '../../store/auth/actions'
@@ -12,10 +12,6 @@ function SignIn({ navigation }) {
   const emailRef = useRef()
   const { isLoading } = useSelector(state => !!state.auth)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    emailRef.current.focus()
-  }, [])
 
   function handleOnSubmit() {
     dispatch(signIn(email, password))

@@ -14,11 +14,9 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 20px;
 `
 
-export const Form = styled.KeyboardAvoidingView`
+export const Form = styled.SafeAreaView`
   width: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: #fff;
   padding: 20px;
   justify-content: flex-end;
@@ -28,6 +26,7 @@ export const Form = styled.KeyboardAvoidingView`
 export const Logo = styled.Image`
   width: 92px;
   margin-bottom: 25px;
+  align-self: center;
 `
 
 export const Input = styled(BaseInput)`

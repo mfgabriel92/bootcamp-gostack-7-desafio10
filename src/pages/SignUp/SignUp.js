@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Form, Logo, Input, Button, Link, LinkText } from './styles'
@@ -19,10 +19,6 @@ function SignUp({ navigation }) {
   const confirmPasswordRef = useRef()
   const { isLoading } = useSelector(state => state.auth)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    firstNameRef.current.focus()
-  }, [])
 
   function handleOnSubmit() {
     dispatch(signUp(firstName, lastName, email, password, confirmPassword))
