@@ -10,13 +10,13 @@ export const Container = styled(Background)`
   padding: 10px;
 `
 
-export const Form = styled.SafeAreaView`
+export const Form = styled.KeyboardAvoidingView`
   width: 100%;
   flex-direction: column;
-  background: #fff;
-  padding: 20px;
   justify-content: flex-end;
   overflow: hidden;
+  background: #fff;
+  padding: 20px;
 `
 
 export const Input = styled(BaseInput)`

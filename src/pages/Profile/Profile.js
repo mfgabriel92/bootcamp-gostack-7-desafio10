@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { ScrollView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../../store/user/actions'
 import { Container, Form, Input, Button, Separator } from './styles'
@@ -43,87 +44,89 @@ function Profile() {
   return (
     <Container>
       <Form>
-        <Input
-          icon="user"
-          autoCorrect={false}
-          autoCapitalize="word"
-          placeholder="First name"
-          returnKeyType="next"
-          value={firstName}
-          onChangeText={setFirstName}
-          onSubmitEditing={() => middleNameRef.current.focus()}
-        />
-        <Input
-          icon="user"
-          autoCorrect={false}
-          autoCapitalize="word"
-          placeholder="Middle name"
-          returnKeyType="next"
-          ref={middleNameRef}
-          value={middleName}
-          onChangeText={setMiddleName}
-          onSubmitEditing={() => lastNameRef.current.focus()}
-        />
-        <Input
-          icon="user"
-          autoCorrect={false}
-          autoCapitalize="word"
-          placeholder="Last name"
-          returnKeyType="next"
-          ref={lastNameRef}
-          value={lastName}
-          onChangeText={setLastName}
-          onSubmitEditing={() => emailRef.current.focus()}
-        />
-        <Input
-          icon="envelope"
-          keyboardType="email-address"
-          autoCorrect={false}
-          autoCapitalize="none"
-          placeholder="Your e-mail"
-          returnKeyType="next"
-          value={email}
-          ref={emailRef}
-          onChangeText={setEmail}
-          onSubmitEditing={() => oldPasswordRef.current.focus()}
-        />
+        <ScrollView>
+          <Input
+            icon="user"
+            autoCorrect={false}
+            autoCapitalize="words"
+            placeholder="First name"
+            returnKeyType="next"
+            value={firstName}
+            onChangeText={setFirstName}
+            onSubmitEditing={() => middleNameRef.current.focus()}
+          />
+          <Input
+            icon="user"
+            autoCorrect={false}
+            autoCapitalize="words"
+            placeholder="Middle name"
+            returnKeyType="next"
+            ref={middleNameRef}
+            value={middleName}
+            onChangeText={setMiddleName}
+            onSubmitEditing={() => lastNameRef.current.focus()}
+          />
+          <Input
+            icon="user"
+            autoCorrect={false}
+            autoCapitalize="words"
+            placeholder="Last name"
+            returnKeyType="next"
+            ref={lastNameRef}
+            value={lastName}
+            onChangeText={setLastName}
+            onSubmitEditing={() => emailRef.current.focus()}
+          />
+          <Input
+            icon="envelope"
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Your e-mail"
+            returnKeyType="next"
+            value={email}
+            ref={emailRef}
+            onChangeText={setEmail}
+            onSubmitEditing={() => oldPasswordRef.current.focus()}
+          />
 
-        <Separator />
+          <Separator />
 
-        <Input
-          icon="lock"
-          placeholder="Old password"
-          secureTextEntry
-          returnKeyType="next"
-          value={oldPassword}
-          ref={oldPasswordRef}
-          onSubmitEditing={() => passwordRef.current.focus()}
-          onChangeText={setOldPassword}
-        />
-        <Input
-          icon="lock"
-          placeholder="New password"
-          secureTextEntry
-          returnKeyType="next"
-          value={password}
-          ref={passwordRef}
-          onSubmitEditing={() => confirmPasswordRef.current.focus()}
-          onChangeText={setPassword}
-        />
-        <Input
-          icon="lock"
-          placeholder="New password (again)"
-          secureTextEntry
-          returnKeyType="send"
-          value={confirmPassword}
-          ref={confirmPasswordRef}
-          onChangeText={setConfirmPassword}
-          onSubmitEditing={handleOnSubmit}
-        />
+          <Input
+            icon="lock"
+            placeholder="Old password"
+            secureTextEntry
+            returnKeyType="next"
+            value={oldPassword}
+            ref={oldPasswordRef}
+            onSubmitEditing={() => passwordRef.current.focus()}
+            onChangeText={setOldPassword}
+          />
+          <Input
+            icon="lock"
+            placeholder="New password"
+            secureTextEntry
+            returnKeyType="next"
+            value={password}
+            ref={passwordRef}
+            onSubmitEditing={() => confirmPasswordRef.current.focus()}
+            onChangeText={setPassword}
+          />
+          <Input
+            icon="lock"
+            placeholder="New password (again)"
+            secureTextEntry
+            returnKeyType="send"
+            value={confirmPassword}
+            ref={confirmPasswordRef}
+            onChangeText={setConfirmPassword}
+            onSubmitEditing={handleOnSubmit}
+          />
 
-        <Button icon="pencil-alt" onPress={handleOnSubmit}>
-          Update
-        </Button>
+          <Button icon="pencil-alt" onPress={handleOnSubmit}>
+            Update
+          </Button>
+        </ScrollView>
       </Form>
     </Container>
   )

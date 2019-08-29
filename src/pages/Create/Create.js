@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { ScrollView } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   parseISO,
@@ -56,46 +57,48 @@ function Create({ navigation }) {
   return (
     <Container>
       <Form>
-        <BaseImagePicker
-          onSelect={setBanner}
-          banner={meetup && meetup.banner}
-        />
-        <Input
-          label="Event title"
-          icon="calendar"
-          ref={titleRef}
-          returnKeyType="next"
-          onSubmitEditing={() => descriptionRef.current.focus()}
-          value={title}
-          onChangeText={setTitle}
-        />
-        <Textarea
-          label="Event description"
-          icon="question"
-          ref={descriptionRef}
-          value={description}
-          onChangeText={setDescription}
-        />
-        <DateTime>
-          <BaseDateInput label="Date" date={date} onChange={setDate} />
-          <BaseTimeInput label="Time" value={time} onChange={setTime} />
-        </DateTime>
-        <Input
-          label="Location"
-          icon="map-marker-alt"
-          ref={locationRef}
-          returnKeyType="send"
-          onSubmitEditing={handleOnSubmit}
-          value={location}
-          onChangeText={setLocation}
-        />
-        <Button
-          icon={`${id ? 'pencil-alt' : 'plus'}`}
-          onPress={handleOnSubmit}
-          isLoading={isLoading}
-        >
-          {id ? 'Edit' : 'Create'}
-        </Button>
+        <ScrollView>
+          <BaseImagePicker
+            onSelect={setBanner}
+            banner={meetup && meetup.banner}
+          />
+          <Input
+            label="Event title"
+            icon="calendar"
+            ref={titleRef}
+            returnKeyType="next"
+            onSubmitEditing={() => descriptionRef.current.focus()}
+            value={title}
+            onChangeText={setTitle}
+          />
+          <Textarea
+            label="Event description"
+            icon="question"
+            ref={descriptionRef}
+            value={description}
+            onChangeText={setDescription}
+          />
+          <DateTime>
+            <BaseDateInput label="Date" date={date} onChange={setDate} />
+            <BaseTimeInput label="Time" value={time} onChange={setTime} />
+          </DateTime>
+          <Input
+            label="Location"
+            icon="map-marker-alt"
+            ref={locationRef}
+            returnKeyType="send"
+            onSubmitEditing={handleOnSubmit}
+            value={location}
+            onChangeText={setLocation}
+          />
+          <Button
+            icon={`${id ? 'pencil-alt' : 'plus'}`}
+            onPress={handleOnSubmit}
+            isLoading={isLoading}
+          >
+            {id ? 'Edit' : 'Create'}
+          </Button>
+        </ScrollView>
       </Form>
     </Container>
   )

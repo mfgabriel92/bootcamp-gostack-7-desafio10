@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { ScrollView } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Form, Logo, Input, Button, Link, LinkText } from './styles'
 import { signUp } from '../../store/auth/actions'
@@ -31,69 +32,71 @@ function SignUp({ navigation }) {
     <Background>
       <Container>
         <Form>
-          <Logo source={logo} />
-          <Input
-            icon="user"
-            placeholder="First name"
-            autoCapitalize="words"
-            returnKeyType="next"
-            ref={firstNameRef}
-            onSubmitEditing={() => lastNameRef.current.focus()}
-            autoCorrect={false}
-            value={firstName}
-            onChangeText={setFirstName}
-          />
-          <Input
-            icon="user"
-            placeholder="Last name"
-            autoCapitalize="words"
-            returnKeyType="next"
-            ref={lastNameRef}
-            onSubmitEditing={() => emailRef.current.focus()}
-            autoCorrect={false}
-            value={lastName}
-            onChangeText={setLastName}
-          />
-          <Input
-            icon="envelope"
-            keyboardType="email-address"
-            placeholder="E-mail address"
-            autoCapitalize="none"
-            returnKeyType="next"
-            ref={emailRef}
-            onSubmitEditing={() => passwordRef.current.focus()}
-            autoCorrect={false}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <Input
-            icon="lock"
-            placeholder="Password"
-            secureTextEntry
-            autoCapitalize="none"
-            returnKeyType="next"
-            ref={passwordRef}
-            onSubmitEditing={() => confirmPasswordRef.current.focus()}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <Input
-            icon="lock"
-            placeholder="Confirm password"
-            secureTextEntry
-            autoCapitalize="none"
-            ref={confirmPasswordRef}
-            returnKeyType="send"
-            onSubmitEditing={() => handleOnSubmit}
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-          />
-          <Button icon="plus" onPress={handleOnSubmit} isLoading={isLoading}>
-            Create
-          </Button>
-          <Link onPress={() => navigation.navigate('SignIn')}>
-            <LinkText>Have an account? Enter now</LinkText>
-          </Link>
+          <ScrollView>
+            <Logo source={logo} />
+            <Input
+              icon="user"
+              placeholder="First name"
+              autoCapitalize="words"
+              returnKeyType="next"
+              ref={firstNameRef}
+              onSubmitEditing={() => lastNameRef.current.focus()}
+              autoCorrect={false}
+              value={firstName}
+              onChangeText={setFirstName}
+            />
+            <Input
+              icon="user"
+              placeholder="Last name"
+              autoCapitalize="words"
+              returnKeyType="next"
+              ref={lastNameRef}
+              onSubmitEditing={() => emailRef.current.focus()}
+              autoCorrect={false}
+              value={lastName}
+              onChangeText={setLastName}
+            />
+            <Input
+              icon="envelope"
+              keyboardType="email-address"
+              placeholder="E-mail address"
+              autoCapitalize="none"
+              returnKeyType="next"
+              ref={emailRef}
+              onSubmitEditing={() => passwordRef.current.focus()}
+              autoCorrect={false}
+              value={email}
+              onChangeText={setEmail}
+            />
+            <Input
+              icon="lock"
+              placeholder="Password"
+              secureTextEntry
+              autoCapitalize="none"
+              returnKeyType="next"
+              ref={passwordRef}
+              onSubmitEditing={() => confirmPasswordRef.current.focus()}
+              value={password}
+              onChangeText={setPassword}
+            />
+            <Input
+              icon="lock"
+              placeholder="Confirm password"
+              secureTextEntry
+              autoCapitalize="none"
+              ref={confirmPasswordRef}
+              returnKeyType="send"
+              onSubmitEditing={() => handleOnSubmit}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+            />
+            <Button icon="plus" onPress={handleOnSubmit} isLoading={isLoading}>
+              Create
+            </Button>
+            <Link onPress={() => navigation.navigate('SignIn')}>
+              <LinkText>Have an account? Enter now</LinkText>
+            </Link>
+          </ScrollView>
         </Form>
       </Container>
     </Background>
