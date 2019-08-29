@@ -7,12 +7,12 @@ import done from '../../assets/ribbon-done.png'
 export const Container = styled(Background)`
   display: flex;
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   position: relative;
 `
 
 export const Info = styled.View`
-  padding: 15px;
+  padding: 5px;
   background: #fff;
 `
 
@@ -70,7 +70,7 @@ export const Footer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   background: #fff;
-  padding: 5px 10px;
+  padding: 5px;
   align-items: center;
 `
 
