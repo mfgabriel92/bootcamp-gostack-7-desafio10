@@ -10,7 +10,7 @@ function SignIn({ navigation }) {
   const [password, setPassword] = useState('')
   const passwordRef = useRef()
   const emailRef = useRef()
-  const { isLoading } = useSelector(state => state.auth)
+  const { isLoading } = useSelector(state => !!state.auth)
   const dispatch = useDispatch()
 
   useEffect(() => {

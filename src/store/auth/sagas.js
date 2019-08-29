@@ -1,6 +1,6 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects'
 import { Alert } from 'react-native'
-import { signInSuccess } from './actions'
+import { signInSuccess, failure } from './actions'
 import api from '../../services/api'
 import navigation from '../../services/navigation'
 import types from './types'
@@ -26,6 +26,7 @@ export function* signIn({ payload }) {
     yield put(signInSuccess(user, token))
   } catch ({ response }) {
     Alert.alert('Sign-in Error', 'Error while signing in')
+    yield put(failure())
   }
 }
 
@@ -42,6 +43,7 @@ export function* signUp({ payload }) {
     navigation.navigate('SignIn')
   } catch ({ response }) {
     Alert.alert('Sign-up Error', 'Error while signing up')
+    yield put(failure())
   }
 }
 

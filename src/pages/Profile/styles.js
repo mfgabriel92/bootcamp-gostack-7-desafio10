@@ -10,7 +10,7 @@ export const Container = styled(Background)`
   padding: 10px;
 `
 
-export const Form = styled.KeyboardAvoidingView`
+export const Form = styled.SafeAreaView`
   width: 100%;
   flex-direction: column;
   background: #fff;

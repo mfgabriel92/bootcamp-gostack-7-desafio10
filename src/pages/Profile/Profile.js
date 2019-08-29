@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { updateUser } from '../../store/user/actions'
 import { Container, Form, Input, Button, Separator } from './styles'
 
 function Profile() {
@@ -8,24 +9,36 @@ function Profile() {
   const [middleName, setMiddleName] = useState(me.middle_name)
   const [lastName, setLastName] = useState(me.last_name)
   const [email, setEmail] = useState(me.email)
-  const [oldPass, setOldPass] = useState(null)
-  const [newPass, setNewPass] = useState(null)
-  const [confPass, setConfPass] = useState(null)
+  const [oldPassword, setOldPassword] = useState(null)
+  const [password, setPassword] = useState(null)
+  const [confirmPassword, setConfirmPassword] = useState(null)
   const dispatch = useDispatch()
+  const middleNameRef = useRef()
+  const lastNameRef = useRef()
   const emailRef = useRef()
-  const oldPassRef = useRef()
-  const newPassRef = useRef()
-  const confPassRef = useRef()
+  const oldPasswordRef = useRef()
+  const passwordRef = useRef()
+  const confirmPasswordRef = useRef()
 
   useEffect(() => {
-    setOldPass(null)
-    setNewPass(null)
-    setConfPass(null)
+    setOldPassword(null)
+    setPassword(null)
+    setConfirmPassword(null)
   }, [me])
 
-  // function handleOnSubmit() {
-  //   dispatch(updateUser({ name, email, oldPass, newPass, confPass }))
-  // }
+  function handleOnSubmit() {
+    dispatch(
+      updateUser({
+        first_name: firstName,
+        middle_name: middleName,
+        last_name: lastName,
+        email,
+        oldPassword,
+        password,
+        confirmPassword,
+      })
+    )
+  }
 
   return (
     <Container>
@@ -33,29 +46,31 @@ function Profile() {
         <Input
           icon="user"
           autoCorrect={false}
-          autoCapitalize="none"
+          autoCapitalize="word"
           placeholder="First name"
           returnKeyType="next"
           value={firstName}
           onChangeText={setFirstName}
-          onSubmitEditing={() => emailRef.current.focus()}
+          onSubmitEditing={() => middleNameRef.current.focus()}
         />
         <Input
           icon="user"
           autoCorrect={false}
-          autoCapitalize="none"
+          autoCapitalize="word"
           placeholder="Middle name"
           returnKeyType="next"
+          ref={middleNameRef}
           value={middleName}
           onChangeText={setMiddleName}
-          onSubmitEditing={() => emailRef.current.focus()}
+          onSubmitEditing={() => lastNameRef.current.focus()}
         />
         <Input
           icon="user"
           autoCorrect={false}
-          autoCapitalize="none"
+          autoCapitalize="word"
           placeholder="Last name"
           returnKeyType="next"
+          ref={lastNameRef}
           value={lastName}
           onChangeText={setLastName}
           onSubmitEditing={() => emailRef.current.focus()}
@@ -66,10 +81,11 @@ function Profile() {
           autoCorrect={false}
           autoCapitalize="none"
           placeholder="Your e-mail"
-          returnKeyType="send"
+          returnKeyType="next"
           value={email}
           ref={emailRef}
           onChangeText={setEmail}
+          onSubmitEditing={() => oldPasswordRef.current.focus()}
         />
 
         <Separator />
@@ -79,32 +95,33 @@ function Profile() {
           placeholder="Old password"
           secureTextEntry
           returnKeyType="next"
-          value={oldPass}
-          ref={oldPassRef}
-          onSubmitEditing={() => newPassRef.current.focus()}
-          onChangeText={setOldPass}
+          value={oldPassword}
+          ref={oldPasswordRef}
+          onSubmitEditing={() => passwordRef.current.focus()}
+          onChangeText={setOldPassword}
         />
         <Input
           icon="lock"
           placeholder="New password"
           secureTextEntry
           returnKeyType="next"
-          value={newPass}
-          ref={newPassRef}
-          onSubmitEditing={() => confPassRef.current.focus()}
-          onChangeText={setNewPass}
+          value={password}
+          ref={passwordRef}
+          onSubmitEditing={() => confirmPasswordRef.current.focus()}
+          onChangeText={setPassword}
         />
         <Input
           icon="lock"
           placeholder="New password (again)"
           secureTextEntry
           returnKeyType="send"
-          value={confPass}
-          ref={confPassRef}
-          onChangeText={setConfPass}
+          value={confirmPassword}
+          ref={confirmPasswordRef}
+          onChangeText={setConfirmPassword}
+          onSubmitEditing={handleOnSubmit}
         />
 
-        <Button icon="pencil-alt" onPress={() => {}}>
+        <Button icon="pencil-alt" onPress={handleOnSubmit}>
           Update
         </Button>
       </Form>
