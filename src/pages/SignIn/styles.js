@@ -14,13 +14,15 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 20px;
 `
 
-export const Form = styled.View`
+export const Form = styled.KeyboardAvoidingView`
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #fff;
   padding: 20px;
+  justify-content: flex-end;
+  overflow: hidden;
 `
 
 export const Logo = styled.Image`

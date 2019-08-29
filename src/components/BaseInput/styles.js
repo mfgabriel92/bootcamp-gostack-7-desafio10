@@ -5,6 +5,7 @@ export const Container = styled.View`
   height: 42px;
   flex-direction: row;
   align-items: center;
+  font-family: 'OpenSans-Regular';
 `
 
 export const Label = styled.Text`

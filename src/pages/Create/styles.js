@@ -26,11 +26,13 @@ export const PickImage = styled.TouchableOpacity`
   margin-bottom: 20px;
 `
 
-export const Form = styled.ScrollView.attrs({})`
+export const Form = styled.KeyboardAvoidingView`
   width: 100%;
   flex-direction: column;
   background: #fff;
   padding: 20px;
+  justify-content: flex-end;
+  overflow: hidden;
 `
 
 export const Input = styled(BaseInput)`
