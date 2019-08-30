@@ -4,16 +4,30 @@ import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import ImagePicker from 'react-native-image-picker'
 import { BASE_URL } from 'react-native-dotenv'
-import { Banner, PickImage } from './styles'
+import { Banner, PickBanner, PickAvatar, Avatar } from './styles'
 
-function BaseImagePicker({ onSelect, banner }) {
+function BaseImagePicker({ type, onSelect, previousImage }) {
   const [preview, setPreview] = useState(null)
+  const [Container, setContainer] = useState(PickBanner)
+  const [Image, setImage] = useState(Banner)
 
   useEffect(() => {
-    if (banner) {
-      setPreview({ uri: `${BASE_URL}/files/${banner.name}` })
+    if (previousImage) {
+      setPreview({ uri: `${BASE_URL}/files/${previousImage.name}` })
     }
-  }, [banner])
+  }, [previousImage])
+
+  useEffect(() => {
+    switch (type) {
+      case 'avatar':
+        setContainer(PickAvatar)
+        setImage(Avatar)
+        break
+      default:
+        setContainer(PickBanner)
+        setImage(Banner)
+    }
+  }, [type])
 
   function chooseImage() {
     const options = {
@@ -30,11 +44,11 @@ function BaseImagePicker({ onSelect, banner }) {
       }
 
       setPreview({ uri: `data:image/jpeg;base64,${upload.data}` })
-      setBanner(upload)
+      setChosenImage(upload)
     })
   }
 
-  function setBanner(upload) {
+  function setChosenImage(upload) {
     let prefix = new Date().getTime()
     let ext
 
@@ -55,9 +69,9 @@ function BaseImagePicker({ onSelect, banner }) {
   }
 
   return (
-    <PickImage onPress={chooseImage}>
+    <Container onPress={chooseImage}>
       {preview ? (
-        <Banner source={preview} />
+        <Image source={preview} />
       ) : (
         <>
           <Text>
@@ -66,17 +80,19 @@ function BaseImagePicker({ onSelect, banner }) {
           <Text>Pick an image</Text>
         </>
       )}
-    </PickImage>
+    </Container>
   )
 }
 
 BaseImagePicker.propTypes = {
+  type: PropTypes.string,
   onSelect: PropTypes.func.isRequired,
-  banner: PropTypes.object,
+  previousImage: PropTypes.object,
 }
 
 BaseImagePicker.defaultProps = {
-  banner: null,
+  type: 'banner',
+  previousImage: null,
 }
 
 export default BaseImagePicker

@@ -3,11 +3,13 @@ import { ScrollView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../../store/user/actions'
 import { Container, Form, Input, Button, Separator } from './styles'
+import BaseImagePicker from '../../components/BaseImagePicker'
 
 function Profile() {
   const me = useSelector(state => state.user.me)
+  const [avatar, setAvatar] = useState(me.avatar)
   const [firstName, setFirstName] = useState(me.first_name)
-  const [middleName, setMiddleName] = useState(me.middle_name)
+  const [middleName, setMiddleName] = useState(me.middle_name || '')
   const [lastName, setLastName] = useState(me.last_name)
   const [email, setEmail] = useState(me.email)
   const [oldPassword, setOldPassword] = useState(null)
@@ -30,6 +32,7 @@ function Profile() {
   function handleOnSubmit() {
     dispatch(
       updateUser({
+        avatar,
         first_name: firstName,
         middle_name: middleName,
         last_name: lastName,
@@ -45,6 +48,11 @@ function Profile() {
     <Container>
       <Form>
         <ScrollView>
+          <BaseImagePicker
+            type="avatar"
+            onSelect={setAvatar}
+            previousImage={avatar}
+          />
           <Input
             icon="user"
             autoCorrect={false}

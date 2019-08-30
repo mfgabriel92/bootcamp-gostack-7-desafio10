@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { BASE_URL } from 'react-native-dotenv'
 import { logoff } from '../../store/auth/actions'
 import {
   Container,
@@ -23,7 +24,13 @@ function DashboardLayout({ navigation }) {
     <Container>
       <Banner>
         <BannerWrapper onPress={() => navigation.navigate('Profile', { me })}>
-          <UserAvatar source={me.avatar ? me.avatar.path : noImage} />
+          <UserAvatar
+            source={
+              me.avatar
+                ? { uri: `${BASE_URL}/files/${me.avatar.name}` }
+                : noImage
+            }
+          />
           <UserName>
             {me.first_name} {me.middle_name} {me.last_name}
           </UserName>

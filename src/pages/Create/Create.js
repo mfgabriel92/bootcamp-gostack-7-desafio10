@@ -60,7 +60,7 @@ function Create({ navigation }) {
         <ScrollView>
           <BaseImagePicker
             onSelect={setBanner}
-            banner={meetup && meetup.banner}
+            previousImage={meetup && meetup.banner}
           />
           <Input
             label="Event title"

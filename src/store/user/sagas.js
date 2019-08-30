@@ -6,14 +6,28 @@ import api from '../../services/api'
 import types from './types'
 
 export function* updateUser({ payload }) {
-  const { first_name, middle_name, last_name, email, ...rest } = payload.data
+  const {
+    avatar,
+    first_name,
+    middle_name,
+    last_name,
+    email,
+    ...rest
+  } = payload.data
   const me = Object.assign(
-    { first_name, middle_name, last_name, email },
+    { avatar, first_name, middle_name, last_name, email },
     rest.oldPassword ? rest : {}
   )
 
   try {
     const response = yield call(api.put, 'users', me)
+
+    if (avatar) {
+      const image = new FormData()
+      image.append('file', avatar)
+      yield call(api.post, 'users/avatar', image)
+    }
+
     yield put(updateUserSuccess(response.data.user))
     navigation.navigate('Meetups')
   } catch ({ response: { data } }) {
